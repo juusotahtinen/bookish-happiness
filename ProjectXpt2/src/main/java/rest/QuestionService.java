@@ -27,7 +27,7 @@ public class QuestionService {
 	public List<Kysymykset> readQuestion() {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		@SuppressWarnings("unchecked")
+
 		List<Kysymykset> list = em.createQuery("select * from Kysymykset").getResultList();
 		em.getTransaction().commit();
 		return list;

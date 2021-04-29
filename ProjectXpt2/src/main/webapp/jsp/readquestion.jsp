@@ -42,10 +42,10 @@
 				<th>Toiminnot</th>
 			</tr>
 
-			<c:forEach var="readQuestion" items="${readQuestion}" >
+			<c:forEach var="readquestion" items="${readquestion}" >
 				<tr>
 
-					<td>${readQuestion.kysymys_id}</td>
+					<td>${readquestion.kysymys_id}</td>
 					
 				</tr>
 			</c:forEach>
