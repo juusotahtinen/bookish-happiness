@@ -44,10 +44,10 @@ public class HandleQuestions extends HttpServlet {
 		case "/readquestion":
 			list = readquestion(request);break;
 		}
-		request.setAttribute("questionlist", list);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestions.jsp");
-		rd.forward(request, response);
+		request.setAttribute("readquestion", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/readquestion.jsp");
+        dispatcher.forward(request, response);
 	}
 	
 
@@ -55,7 +55,7 @@ public class HandleQuestions extends HttpServlet {
 	private List<Kysymykset> readquestion(HttpServletRequest request) {
 		@SuppressWarnings("unused")
 		String id = request.getParameter("kysymys_id");
-		String uri = "http://localhost:8080/rest/questionservice/readquestion";
+		String uri = "http://127.0.0.1:8080/rest/questionservice/readquestion";
 		Client c = ClientBuilder.newClient();
 		WebTarget wt = c.target(uri);
 		Builder b = wt.request();

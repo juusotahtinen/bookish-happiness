@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.ArrayList" %>   
+<%@ page import="java.util.List" %> 
 <%@ page import="data.Kysymykset" %>   
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -41,10 +42,10 @@
 				<th>Toiminnot</th>
 			</tr>
 
-			<c:forEach var="readQuestions" items="${readQuestions}" >
+			<c:forEach var="readQuestion" items="${readQuestion}" >
 				<tr>
 
-					<td>${readQuestions.kysymys_id}</td>
+					<td>${readQuestion.kysymys_id}</td>
 					
 				</tr>
 			</c:forEach>
