@@ -1,5 +1,9 @@
 package data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  * @author Leevi Palo
@@ -12,12 +16,23 @@ public class Kysymykset {
 	/**
 	 * Alustetaan id ja kysymys, jotka tarkoittavat tietokannasta saatuja kysymyksia ja niiden id:ta
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private int kysymys_id;
 	private String kysymys;
 	
 	/**
 	 * Setter ja Getter rakenne ylla alustetuille muuttujille
 	 */
+	
+	public Kysymykset () {
+		
+	}
+	
+	public Kysymykset(int kysymys_id) {
+		this.kysymys_id=kysymys_id;
+	}
 	
 	public int getId() {
 		return id;
@@ -30,6 +45,12 @@ public class Kysymykset {
 	}
 	public void setKysymys(String kysymys) {
 		this.kysymys = kysymys;
+	}
+	public int getKysymys_id() {
+		return kysymys_id;
+	}
+	public void setKysymys_id(int kysymys_id) {
+		this.kysymys_id = kysymys_id;
 	}
 
 }
