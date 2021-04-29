@@ -64,6 +64,10 @@ public class Candidates {
 	public Candidates() {
 
 	}
+	
+//	public Candidates() {
+//
+//	}
 
 	public int getEhdokas_id() {
 		return ehdokas_id;
