@@ -18,8 +18,7 @@ public class Kysymykset {
 	 * Alustetaan id ja kysymys, jotka tarkoittavat tietokannasta saatuja kysymyksia ja niiden id:ta
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int kysymys_id;
 	private String kysymys;
 	
@@ -35,12 +34,7 @@ public class Kysymykset {
 		this.kysymys_id=kysymys_id;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getKysymys() {
 		return kysymys;
 	}
@@ -52,6 +46,10 @@ public class Kysymykset {
 	}
 	public void setKysymys_id(int kysymys_id) {
 		this.kysymys_id = kysymys_id;
+	}
+	
+	public String toString() {
+		return kysymys_id+":  "+kysymys;
 	}
 
 }

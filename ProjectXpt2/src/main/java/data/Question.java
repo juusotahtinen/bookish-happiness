@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,16 +13,17 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+@Entity
 public class Question {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int kysymys_id;
 	private String kysymys;
 
-	//bi-directional many-to-one association to Fish
-	@OneToMany(mappedBy="question", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JsonManagedReference //To handle converting object to JSON and backwards
-	private List<Question> questionlist;
+//	//bi-directional many-to-one association to Fish
+//	@OneToMany(mappedBy="question", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+//	@JsonManagedReference //To handle converting object to JSON and backwards
+//	private List<Question> questionlist;
 	
 	public Question() {
 		
@@ -51,16 +53,16 @@ public class Question {
 		this.kysymys = kysymys;
 	}
 
-	public List<Question> getQuestionlist() {
-		if (this.questionlist==null) {
-			questionlist=new ArrayList<>();
-		}
-		return this.questionlist;
-	}
-
-	public void setQuestionlist(List<Question> questionlist) {
-		this.questionlist = questionlist;
-	}
+//	public List<Question> getQuestionlist() {
+//		if (this.questionlist==null) {
+//			questionlist=new ArrayList<>();
+//		}
+//		return this.questionlist;
+//	}
+//
+//	public void setQuestionlist(List<Question> questionlist) {
+//		this.questionlist = questionlist;
+//	}
 //
 //	public Fish addFish(Fish fish) {
 //		getFishlist().add(fish);
@@ -77,11 +79,7 @@ public class Question {
 	
 	
 	public String toString() {
-		String flist="";
-		for (int i=0;questionlist!=null && i<questionlist.size();i++) {
-			flist=flist+questionlist.get(i)+"<br>";
-		}
-		return kysymys_id+": "+kysymys+" <br>The catch:<br> "+flist;
+		return kysymys_id+":  "+kysymys;
 	}
 }
 

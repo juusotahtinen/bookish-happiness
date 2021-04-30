@@ -1,4 +1,4 @@
-package rest;
+package app;
 
 
 import data.Question;
@@ -21,11 +21,11 @@ import javax.ws.rs.core.GenericType;
 
 
 
-@Path ("/readallquestions")
+@Path ("/readquestions")
 public class ReadAllQuestions {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	      throws IOException, ServletException {
-			String uri = "http://localhost:8080/rest/handlequestions/getquestions";
+			String uri = "http://localhost:8080/rest/handlequestions/all";
 
 			Client asiakas=ClientBuilder.newClient();
 			WebTarget wt=asiakas.target(uri);
@@ -38,7 +38,7 @@ public class ReadAllQuestions {
 			//Posting data (Entity<ArrayList<DogBreed>> e) to the given address
 			List<Question> returnedList=b.get(genericList);
 		    request.setAttribute("questionlist", returnedList);
-		    RequestDispatcher rd=request.getRequestDispatcher("/jsp/readallquestions.jsp");
+		    RequestDispatcher rd=request.getRequestDispatcher("/readallquestions.jsp");
 			rd.forward(request, response);
 	}
 }
