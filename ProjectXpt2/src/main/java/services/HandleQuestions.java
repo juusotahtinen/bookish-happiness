@@ -27,7 +27,7 @@ public class HandleQuestions {
 		@GET
 		@Path("/all")
 		@Produces(MediaType.APPLICATION_JSON)
-		public List<Kysymykset> readAllPrey() {
+		public List<Kysymykset> readAllQuestions() {
 		//Create an EntityManagerFactory with the settings from persistence.xml file
 			EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 			//And then EntityManager, which can manage the entities.
