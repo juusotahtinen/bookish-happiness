@@ -1,20 +1,14 @@
 package app;
 
-import data.Kysymykset;
-import java.io.IOException;
+import data.Question;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 
 
@@ -26,44 +20,21 @@ import javax.ws.rs.core.GenericType;
  * @author juuso
  */
 
-@SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/readquestion"})
-public class HandleQuestions extends HttpServlet {
-	
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
-       
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action=request.getServletPath();
-		List<Kysymykset> list = null;
-		switch (action) {
-		case "/readquestion":
-			list = readquestion(request);break;
-		}
-		
-		request.setAttribute("readquestion", list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/readquestion.jsp");
-        dispatcher.forward(request, response);
-	}
-	
 
+@Path("/handlequestions")
+public class HandleQuestions {	
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 
-	private List<Kysymykset> readquestion(HttpServletRequest request) {
-		@SuppressWarnings("unused")
-		String id = request.getParameter("kysymys_id");
-		String uri = "http://127.0.0.1:8080/rest/questionservice/readquestion";
-		Client c = ClientBuilder.newClient();
-		WebTarget wt = c.target(uri);
-		Builder b = wt.request();
-		
-		GenericType<List<Kysymykset>> genericList = new GenericType<List<Kysymykset>>( ) {};
-		
-		List<Kysymykset> returnedList = b.get(genericList);
-		return returnedList;
+	
+	@GET
+	@Path("/getquestions")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Question> getQuestions(){
+	    EntityManager em=emf.createEntityManager();
+	    em.getTransaction().begin();
+	    List<Question> list=em.createQuery("select a from Kysymykset a").getResultList();
+	    em.getTransaction().commit();
+		return list;
 	}
     
 }

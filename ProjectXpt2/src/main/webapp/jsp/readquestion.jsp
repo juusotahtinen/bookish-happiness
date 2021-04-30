@@ -36,10 +36,8 @@
 			
 			<tr class = "thead-dark">
 
-				<th>Sukunimi</th>
-				<th>Etunimi</th>
-				<th>Puolue</th>
-				<th>Toiminnot</th>
+				<th>Kysymys ID</th>
+				
 			</tr>
 
 			<c:forEach var="readquestion" items="${readquestion}" >
