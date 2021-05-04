@@ -28,6 +28,8 @@ import javax.ws.rs.core.MediaType;
 public class QuestionService {	
 	//Reading all the rows from table kysymykset.
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
+		
+		
 		@GET
 		@Path("/readquestions")
 		@Produces(MediaType.APPLICATION_JSON)

@@ -63,7 +63,7 @@ public class Kysymykset {
 	}
 	
 	public String toString() {
-		return kysymys_id+":  "+kysymys;
+		return "  "+kysymys;
 	}
 
 }
