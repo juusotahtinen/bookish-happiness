@@ -1,6 +1,5 @@
 package services;
 import data.Kysymykset;
-import data.Question;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,7 +22,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/handlequestions")
 public class HandleQuestions {	
-	//Reading all the rows from table prey.
+	//Reading all the rows from table kysymykset.
 		@GET
 		@Path("/all")
 		@Produces(MediaType.APPLICATION_JSON)
