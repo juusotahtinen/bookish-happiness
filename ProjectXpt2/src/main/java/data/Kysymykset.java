@@ -53,8 +53,13 @@ public class Kysymykset {
 	public int getKysymys_id() {
 		return kysymys_id;
 	}
-	public void setKysymys_id(int kysymys_id) {
-		this.kysymys_id = kysymys_id;
+	public void setKysymys_id(String kysymys_id) {
+		try {
+			this.kysymys_id = Integer.parseInt(kysymys_id);	
+		}
+		catch (NumberFormatException | NullPointerException e) {
+			
+		}
 	}
 	
 	public String toString() {
