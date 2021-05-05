@@ -104,33 +104,3 @@ public class HandleQuestions extends HttpServlet {
 
 
 }
-
-
-
-
-
-
-
-
-//<a href='../deletequestions?kysymys_id=${kysymykset.kysymys_id }'>Poista</a>
-
-//@Path ("/readquestions")
-//public class ReadAllQuestions {
-//	public void doGet(HttpServletRequest request, HttpServletResponse response) 
-//	      throws IOException, ServletException {
-//			String uri = "http://localhost:8080/rest/handlequestions/all";
-//
-//			Client asiakas=ClientBuilder.newClient();
-//			WebTarget wt=asiakas.target(uri);
-//			Builder b=wt.request();
-//			
-//			//Create a GenericType to be able to get List of objects
-//			//This will be the second parameter of post method
-//			GenericType<List<Question>> genericList = new GenericType<List<Question>>() {};
-//			
-//			//Posting data (Entity<ArrayList<DogBreed>> e) to the given address
-//			List<Question> returnedList=b.get(genericList);
-//		    request.setAttribute("questionlist", returnedList);
-//		    RequestDispatcher rd=request.getRequestDispatcher("/readallquestions.jsp");
-//			rd.forward(request, response);
-//	}
