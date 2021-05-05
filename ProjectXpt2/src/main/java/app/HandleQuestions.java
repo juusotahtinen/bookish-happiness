@@ -75,7 +75,7 @@ public class HandleQuestions extends HttpServlet {
 		WebTarget wt=asiakas.target(uri);
 		Builder b=wt.request();
 		GenericType<List<Kysymykset>> gL = new GenericType<List<Kysymykset>>() {};
-		List<Kysymykset> rL=b.get(gL);
+		List<Kysymykset> rL=b.delete(gL);
 		return rL;
 	}
 	private Kysymykset readtoupdatequestions(HttpServletRequest request) {
