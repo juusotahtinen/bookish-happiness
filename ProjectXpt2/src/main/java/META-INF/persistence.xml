@@ -6,6 +6,7 @@
 	<persistence-unit name="vaalikone">
 	<class>data.Kysymykset</class>
 	<class>data.Vastaukset</class>
+	<class>data.Account</class>
 		
 <!-- If using MySQL 5.7 -->
 <!--  

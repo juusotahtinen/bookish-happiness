@@ -43,6 +43,11 @@ public class Kysymykset {
 		this.kysymys=kysymys;
 	}
 	
+	public Kysymykset(String kysymys_id, String kysymys) {
+		this.setKysymys_id(kysymys_id);
+		this.kysymys=kysymys;
+	}
+	
 
 	public String getKysymys() {
 		return kysymys;
@@ -63,7 +68,7 @@ public class Kysymykset {
 	}
 	
 	public String toString() {
-		return kysymys_id+":  "+kysymys;
+		return "  "+kysymys;
 	}
 
 }
