@@ -1,6 +1,7 @@
 package app;
 
 
+
 import data.Kysymykset;
 
 
@@ -22,7 +23,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 
-@WebServlet(urlPatterns = {"/addquestions", "/readquestions", "/deletequestions", "/readtoupdatequestions"})
+@WebServlet(urlPatterns = {"/addquestions", "/readquestions", "/deletequestions", "/readtoupdatequestions", "/updatequestions"})
 public class HandleQuestions extends HttpServlet {
 	
 	@Override
@@ -38,6 +39,8 @@ public class HandleQuestions extends HttpServlet {
 		switch (action) {
 		case "/addquestions":
 			list = addquestions(request);break;
+		case "/updatequestions":
+			  list=updatequestions(request);break;
 		case "/readquestions":
 			list = readquestions(request);break;
 		case "/deletequestions":
@@ -97,6 +100,25 @@ public class HandleQuestions extends HttpServlet {
 		GenericType<List<Kysymykset>> gL = new GenericType<List<Kysymykset>>() {};
 		
 		List<Kysymykset> rL=b.get(gL);
+		return rL;
+	}
+	
+	private List<Kysymykset> updatequestions(HttpServletRequest request) {
+		//A Fish object to send to our web-service 
+		Kysymykset k=new Kysymykset(request.getParameter("kysymys_id"), request.getParameter("kysymys"));
+		System.out.println(k);
+		String uri = "http://localhost:8080/rest/questionservice/updatequestions/";
+		Client c=ClientBuilder.newClient();
+		WebTarget wt=c.target(uri);
+		Builder b=wt.request();
+		//Here we create an Entity of a Fish object as JSON string format
+		Entity<Kysymykset> e=Entity.entity(k,MediaType.APPLICATION_JSON);
+		//Create a GenericType to be able to get List of objects
+		//This will be the second parameter of post method
+		GenericType<List<Kysymykset>> gL = new GenericType<List<Kysymykset>>() {};
+		
+		//Posting data (Entity<ArrayList<DogBreed>> e) to the given address
+		List<Kysymykset> rL=b.put(e, gL);
 		return rL;
 	}
 	
