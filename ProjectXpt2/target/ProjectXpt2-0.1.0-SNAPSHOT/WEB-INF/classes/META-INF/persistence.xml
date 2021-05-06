@@ -3,9 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	<persistence-unit name="hunterappi">
+	<persistence-unit name="vaalikone">
 	<class>data.Kysymykset</class>
 	<class>data.Vastaukset</class>
+	<class>data.Account</class>
 		
 <!-- If using MySQL 5.7 -->
 <!--  
@@ -26,7 +27,7 @@
 	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vaalikone" />
 	    <property name="javax.persistence.jdbc.user" value="pena" />
 	    <property name="javax.persistence.jdbc.password" value="kukkuu" />
-	    <property name="eclipselink.ddl-generation" value="create-tables" />
+
 	</properties>
 	
 	</persistence-unit>
