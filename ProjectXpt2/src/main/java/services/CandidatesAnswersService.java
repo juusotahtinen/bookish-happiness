@@ -33,56 +33,29 @@ public class CandidatesAnswersService {
 	@Context HttpServletRequest request;
 	@Context HttpServletResponse response;
 	
-    
-	
 	@POST
+	@Produces(MediaType.APPLICATION_JSON)//Method returns object as a JSON string
+	@Consumes("application/x-www-form-urlencoded")
 	@Path("/addanswers")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Vastaukset postRiista(@FormParam("breed") String breed, @FormParam("weight") int wait) {
-		Vastaukset vastaukset=new Vastaukset(breed, wait);
+	public void postVastaus(@FormParam("vastaus") int vastaus, @FormParam("kysymys_id") int kysymys_id) {
+
+		int ehdokas_id=3;
+		
+			
+		Vastaukset ehdokkaanVastaus = new Vastaukset(ehdokas_id, kysymys_id, vastaus);
+		
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("hunterappi");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
-		em.persist(prey);
-		em.getTransaction().commit();
-		return prey;
-	}
-
-
-public ArrayList<Integer> ehdokkaaVastaukset(){
-	
-	ArrayList<Integer> kayttajanVastaukset = new ArrayList<>();
-	
-	HttpSession session=request.getSession(false);
-	int size = (int) session.getAttribute("pituus");
-	int vastaus = 0;
-	
-	
-	for (int i=0;i<size;i++) {
+		em.persist(ehdokkaanVastaus);
+		em.getTransaction().commit();		
+		em.close();
 		
-		
-		String param = "radios" + i;
-		String vastausString = request.getParameter(param);
-		if (vastausString == null) {
-			
-			vastaus = 0;
-			kayttajanVastaukset.add(vastaus);
-			
-		}
-		else {
-			
-			vastaus = Integer.parseInt(vastausString);
-			kayttajanVastaukset.add(vastaus);
-			
 		}
 
-	}
-	
-	return null;
-	
 }
 
-}
+
+
 
 

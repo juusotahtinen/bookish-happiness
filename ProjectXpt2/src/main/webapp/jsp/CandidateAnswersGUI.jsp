@@ -36,10 +36,10 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
     margin-bottom: 20px;
 	}
 </style>
-  <HEAD>
-    <TITLE>Vaalikone</TITLE>
-  </HEAD>
 
+    <TITLE>Vaalikone</TITLE>
+
+</head>
   <BODY>
   <header>
   	<h1> VAALIKONE</h1>
@@ -54,15 +54,18 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 
 <div class="startbox">
   <div class="col-sm-12">
-  	<form NAME="vastaukset" ACTION="/rest/candidatesanswersservice/addanswers" METHOD="POST">
+  	<form NAME="vastaukset" ACTION="/rest/candidatesanswersservice/addanswers" METHOD="POST" >
   		<fieldset>
   		<!-- For Looppi jolla saadaan loopattua jokainen kysymys niin etta saadaan kysymys ja viisi radio painiketta vastaamiseen -->
   		<% 
 		ArrayList<Kysymykset> kysymykset = (ArrayList<Kysymykset>)request.getAttribute("kysymykset");
 		
+
+  		
   		for ( int i=0;i < kysymykset.size();i++){
   		
   		Kysymykset k=kysymykset.get(i);
+
   		%>
   	<div class="questionbox">
   		<h3><% out.println(k.getId()+"/"+kysymykset.size()); %></h3>
@@ -79,41 +82,42 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
   		<label>Täysin samaa mieltä</label>
   		</div>
   		</div>
+  		<input type="text" name="kysymys_id" value="<%=k.getId() %>">
   		<div class="row justify-content-md-center">
 		<div class="col-sm-1">
-  		<input  type = "radio" name = "radios<%=i%>" value = "1">
+  		<input type = "radio" name = "vastaus" value = "1">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "radios<%=i%>" value = "2">
+  		<input type = "radio" name = "vastaus" value = "2">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "radios<%=i%>" value = "3">
+  		<input type = "radio" name = "vastaus" value = "3">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "radios<%=i%>" value = "4"> 
+  		<input type = "radio" name = "vastaus" value = "4"> 
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "radios<%=i%>" value = "5"> 
+  		<input type = "radio" name = "vastaus" value = "5"> 
   		</div>
-
   		<br>
   		<br>
 
 
 		</div>
-  		<% 
-		 
 		
-  		}
+  		<input type = "submit" value="Tallenna vastaus" >
 
+  		<% 
+
+  		}
+		
   		%>
-  		<br>
-  		<input type = "submit" value="Lähetä vastauksesi" >
+
+  		
 	</fieldset>	
   	</form>
 	</div>
 	</div>
-
     
 
 

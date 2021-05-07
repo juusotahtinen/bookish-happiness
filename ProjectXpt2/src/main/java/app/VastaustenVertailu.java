@@ -222,7 +222,7 @@ public class VastaustenVertailu extends HttpServlet {
     
     for (int i=0; i<sopivuus.size(); i++) {
     Vastaukset g = list.get(count);
-    ehdokas_id.add(g.getVastaaja_id());
+    ehdokas_id.add(g.getEhdokas_id());
     count = count + size;
     }
    
