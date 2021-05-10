@@ -2,27 +2,50 @@ package data;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  * @author Leevi Palo
  * Data luokka ehdokkaiden vastausten lukua tietokannasta varten
  *
  */
-
+@Entity
 public class Vastaukset {
 	
 	/**
 	 * Alustetaan muuttujat vastaajan id, ehdokkaan vastaus ja kysymyksen id
 	 */
-	private int vastaaja_id;
-	private int vastaus;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	private int ehdokas_id;
 	private int kysymys_id;
+	private int vastaus;
 	
-	public int getVastaaja_id() {
-		return vastaaja_id;
+	
+	public Vastaukset() {
+		super();
 	}
-	public void setVastaaja_id(int vastaaja_id) {
-		this.vastaaja_id = vastaaja_id;
+	
+	public Vastaukset(int ehdokas_id, int kysymys_id, int vastaus) {
+		super();
+		this.ehdokas_id = ehdokas_id;
+		this.kysymys_id = kysymys_id;
+		this.vastaus = vastaus;
+
+		
+	}
+
+	
+	public int getEhdokas_id() {
+		return ehdokas_id;
+	}
+	public void setEhdokas_id(int ehdokas_id) {
+		this.ehdokas_id = ehdokas_id;
 	}
 	public int getVastaus() {
 		return vastaus;
