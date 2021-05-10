@@ -69,7 +69,7 @@ public class DaoAnswers {
 			while (result.next()) {
 				Vastaukset v = new Vastaukset();
 				v.setKysymys_id(result.getInt("KYSYMYS_ID"));
-				v.setVastaaja_id(result.getInt("EHDOKAS_ID"));
+				v.setEhdokas_id(result.getInt("EHDOKAS_ID"));
 				v.setVastaus(result.getInt("vastaus"));
 				list.add(v);
 

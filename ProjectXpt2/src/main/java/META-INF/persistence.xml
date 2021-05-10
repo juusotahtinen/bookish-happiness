@@ -27,7 +27,10 @@
 	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vaalikone" />
 	    <property name="javax.persistence.jdbc.user" value="pena" />
 	    <property name="javax.persistence.jdbc.password" value="kukkuu" />
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 	</properties>
 	
 	</persistence-unit>
