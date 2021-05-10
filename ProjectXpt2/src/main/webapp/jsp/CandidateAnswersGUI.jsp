@@ -68,7 +68,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 
   		%>
   	<div class="questionbox">
-  		<h3><% out.println(k.getId()+"/"+kysymykset.size()); %></h3>
+  		<h3><% out.println(k.getKysymys_id()+"/"+kysymykset.size()); %></h3>
   		<h4><% out.println(k.getKysymys());%></h4>
 	</div>	
 		<div class="row justify-content-md-center">
