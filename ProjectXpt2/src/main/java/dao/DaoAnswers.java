@@ -177,7 +177,7 @@ public class DaoAnswers {
 				 */
 				
 				Kysymykset k = new Kysymykset();
-				k.setId(result.getInt("KYSYMYS_ID"));
+				k.setKysymys_id(result.getString("KYSYMYS_ID"));
 				k.setKysymys(result.getString("KYSYMYS"));
 				
 				/**
