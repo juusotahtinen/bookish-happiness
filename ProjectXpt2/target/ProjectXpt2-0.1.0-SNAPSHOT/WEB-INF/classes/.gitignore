@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-/META-INF/
+/app/
+/dao/
 /data/
-=======
-/data/
+/filter/
 /services/
->>>>>>> main
+/util/
+/META-INF/
