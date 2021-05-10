@@ -23,6 +23,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  * @author juuso
+ * @author riku
  */
 
 
