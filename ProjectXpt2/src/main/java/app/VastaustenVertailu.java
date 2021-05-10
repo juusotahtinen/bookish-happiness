@@ -75,7 +75,7 @@ public class VastaustenVertailu extends HttpServlet {
 		 * Sen jalkeen ne lisataan ArrayListiin
 		 */
 		
-		String param = "radios" + i;
+		String param = "radios" + i; 
 		String vastausString = request.getParameter(param);
 		if (vastausString == null) {
 			

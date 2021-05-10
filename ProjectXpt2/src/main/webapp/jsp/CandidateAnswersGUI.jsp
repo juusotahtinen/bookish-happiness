@@ -54,7 +54,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 
 <div class="startbox">
   <div class="col-sm-12">
-  	<form NAME="vastaukset" ACTION="/rest/candidatesanswersservice/addanswers" METHOD="POST" >
+  	<form NAME="vastaukset" ACTION="/ehdokkaanvastaukset" METHOD="POST" >
   		<fieldset>
   		<!-- For Looppi jolla saadaan loopattua jokainen kysymys niin etta saadaan kysymys ja viisi radio painiketta vastaamiseen -->
   		<% 
@@ -82,22 +82,21 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
   		<label>Täysin samaa mieltä</label>
   		</div>
   		</div>
-  		<input type="text" name="kysymys_id" value="<%=k.getId() %>">
-  		<div class="row justify-content-md-center">
+   		<div class="row justify-content-md-center">
 		<div class="col-sm-1">
-  		<input type = "radio" name = "vastaus" value = "1">
+  		<input type = "radio" name = "radios<%=i%>" value = "1">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "vastaus" value = "2">
+  		<input type = "radio" name = "radios<%=i%>" value = "2">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "vastaus" value = "3">
+  		<input type = "radio" name = "radios<%=i%>" value = "3">
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "vastaus" value = "4"> 
+  		<input type = "radio" name = "radios<%=i%>" value = "4"> 
   		</div>
   		<div class="col-sm-1">
-  		<input type = "radio" name = "vastaus" value = "5"> 
+  		<input type = "radio" name = "radios<%=i%>" value = "5"> 
   		</div>
   		<br>
   		<br>
@@ -105,7 +104,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 
 		</div>
 		
-  		<input type = "submit" value="Tallenna vastaus" >
+  		
 
   		<% 
 
@@ -113,7 +112,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 		
   		%>
 
-  		
+  	<input type = "submit" value = "Tallenna vastaus" >	
 	</fieldset>	
   	</form>
 	</div>

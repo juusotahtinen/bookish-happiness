@@ -20,8 +20,8 @@ public class Vastaukset {
 	 * Alustetaan muuttujat vastaajan id, ehdokkaan vastaus ja kysymyksen id
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int ehdokas_id;
 	private int kysymys_id;
 	private int vastaus;

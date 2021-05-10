@@ -35,13 +35,24 @@ public class CandidatesAnswersService {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)//Method returns object as a JSON string
-	@Consumes("application/x-www-form-urlencoded")
 	@Path("/addanswers")
-	public void postVastaus(@FormParam("vastaus") int vastaus, @FormParam("kysymys_id") int kysymys_id) {
-
-		int ehdokas_id=3;
+	public void postVastaus() {
 		
-			
+		int ehdokas_id = 3;
+		int kysymys_id = 1;
+		int vastaus;
+		
+
+		HttpSession session=request.getSession(false);
+		ArrayList<Integer> kayttajanVastaukset = (ArrayList<Integer>) request.getAttribute("kayttajanVastaukset");
+		int size = (int) session.getAttribute("pituus");
+		
+		for (int i = 0;i<size;i++) {
+		
+		vastaus = kayttajanVastaukset.get(i);	
+		
+		
+		
 		Vastaukset ehdokkaanVastaus = new Vastaukset(ehdokas_id, kysymys_id, vastaus);
 		
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("hunterappi");
@@ -50,6 +61,10 @@ public class CandidatesAnswersService {
 		em.persist(ehdokkaanVastaus);
 		em.getTransaction().commit();		
 		em.close();
+		
+		kysymys_id++;
+		
+		}
 		
 		}
 
