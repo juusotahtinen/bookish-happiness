@@ -55,7 +55,7 @@ public class CandidatesAnswersService {
 		
 		Vastaukset ehdokkaanVastaus = new Vastaukset(ehdokas_id, kysymys_id, vastaus);
 		
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("hunterappi");
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(ehdokkaanVastaus);
