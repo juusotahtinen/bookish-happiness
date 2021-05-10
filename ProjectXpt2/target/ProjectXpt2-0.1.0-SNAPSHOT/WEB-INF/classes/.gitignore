@@ -1,9 +1,11 @@
-<<<<<<< HEAD
-/META-INF/
-/data/
-=======
-/data/
+/app/
 /services/
+<<<<<<< HEAD
 >>>>>>> main
 /dao/
 /app/
+=======
+/data/
+/filter/
+/META-INF/
+>>>>>>> main
