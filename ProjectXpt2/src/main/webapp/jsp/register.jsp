@@ -37,12 +37,10 @@ Email: <input id='email' type='text' name='email' autocomplete="off" value='' pl
 Password: <input id='password' type='password' name='password' autocomplete="off" value='' placeholder='New account password' ><br>
 <input type='button' name='ok' value='Send' onclick='sendData();'><br>
 </form>
+<p><a href='/jsp/login.jsp'>Kirjaudu sisään</a></p>
 
 <p id="submitted"></p>
 
- <p id='responseView'>The response in parts will be shown here!
-</p>
-<p id='inparts'>The response in parts will be shown here!
 
 
 </body>

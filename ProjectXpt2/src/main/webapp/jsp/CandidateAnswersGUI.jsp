@@ -113,6 +113,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
   		%>
 
   	<input type = "submit" value = "Tallenna vastaus" >	
+  	<h2><a href= '/checkuser?logout=yes'>Kirjaudu ulos</a></h2>
 	</fieldset>	
   	</form>
 	</div>

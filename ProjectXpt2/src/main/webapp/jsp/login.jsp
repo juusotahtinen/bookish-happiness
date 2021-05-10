@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 <form action='/checkuser' method='post'>
-<input type='text' name='user' value=''><br>
-<input type='text' name='pass' value=''><br>
+Käyttäjätunnus <input type='text' name='user' value=''><br>
+Salasana <input type='password' name='pass' value=''><br>
 <input type='submit' name='ok' value='OK'><br>
 </form>
+<p>Jos sinulla ei viela ole tunnuksia niin</p>
+<a href='/jsp/register.jsp'>Rekisteröidy tästä</a>
 </body>
 </html>
