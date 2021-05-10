@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action='/checkuser' method='post'>
-<input type='text' name='user' value=''><br>
-<input type='text' name='pass' value=''><br>
-<input type='submit' name='ok' value='OK'><br>
-</form>
+
+	<p> Ei ny tainnu mennä oikein, <a href="/checkuser" class="class1">koita uudestaan</a> tai <a href="http://localhost:8080/" class="class1">palaa etusivulle</a>  </p>
+
+
 </body>
 </html>

@@ -13,11 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-
-
 import data.Account;
-import util.Crypt;
 
 /**
  * Servlet implementation class CheckUser
@@ -52,32 +48,32 @@ public class CheckUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String user=request.getParameter("user");
-		String pass=Crypt.crypt(request.getParameter("pass"));
-		
-		
+		String email=request.getParameter("user");
+		String password=request.getParameter("pass");
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 		EntityManager em=emf.createEntityManager();
-		
-		Query q=em.createQuery("select a from Account a where a.email = :email and a.password = :password");
+		//Checking the user and pass (should be checked from the database)
+		Query q=em.createQuery("select a from Account a where a.user = :userN and a.pass = :passN");
 
-		 q.setParameter("email", user);
 
-		 q.setParameter("password", pass);
 
-		 List<Account> list=q.getResultList();
-		 
-		 
-		 
-		 if (list.size() == 1 ) {
-			 HttpSession sessio=request.getSession(true);
-				sessio.setAttribute("AuthOk", "ok");
-				response.sendRedirect("/index.html");
-			}
-			else {
-				response.sendRedirect("/jsp/login.jsp");//Or perhaps to register page
-			}
+		q.setParameter("userN", email);
+
+
+
+		q.setParameter("passN", password);
+
+
+
+		List<Account> list=q.getResultList();
+		if (email.compareTo("user")==0 && password.compareTo("pass")==0) {
+			HttpSession sessio=request.getSession(true);
+			sessio.setAttribute("AuthOk", "ok");
+			response.sendRedirect("/index.html");
+		}
+		else {
+			response.sendRedirect("/jsp/loginfail.jsp");//Or perhaps to register page
+		}
 	}
 
 }

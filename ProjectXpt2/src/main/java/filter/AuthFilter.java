@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-		, urlPatterns = { "/jsp/protected.jsp","/fromfilter", "/services/signinneeded/*" })
+		, urlPatterns = { "/jsp/protected.jsp","/fromfilter", "/rest/signinneeded/*" })
 public class AuthFilter implements Filter {
 
     /**

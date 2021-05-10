@@ -36,10 +36,10 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
     margin-bottom: 20px;
 	}
 </style>
-  <HEAD>
-    <TITLE>Vaalikone</TITLE>
-  </HEAD>
 
+    <TITLE>Vaalikone</TITLE>
+
+</head>
   <BODY>
   <header>
   	<h1> VAALIKONE</h1>
@@ -54,18 +54,21 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
 
 <div class="startbox">
   <div class="col-sm-12">
-  	<form NAME="vastaukset" ACTION="/rest/candidatesanswersservice/addanswers" METHOD="POST">
+  	<form NAME="vastaukset" ACTION="/ehdokkaanvastaukset" METHOD="POST" >
   		<fieldset>
   		<!-- For Looppi jolla saadaan loopattua jokainen kysymys niin etta saadaan kysymys ja viisi radio painiketta vastaamiseen -->
   		<% 
 		ArrayList<Kysymykset> kysymykset = (ArrayList<Kysymykset>)request.getAttribute("kysymykset");
 		
+
+  		
   		for ( int i=0;i < kysymykset.size();i++){
   		
   		Kysymykset k=kysymykset.get(i);
+
   		%>
   	<div class="questionbox">
-  		<h3><% out.println(k.getId()+"/"+kysymykset.size()); %></h3>
+  		<h3><% out.println(k.getKysymys_id()+"/"+kysymykset.size()); %></h3>
   		<h4><% out.println(k.getKysymys());%></h4>
 	</div>	
 		<div class="row justify-content-md-center">
@@ -79,9 +82,9 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
   		<label>Täysin samaa mieltä</label>
   		</div>
   		</div>
-  		<div class="row justify-content-md-center">
+   		<div class="row justify-content-md-center">
 		<div class="col-sm-1">
-  		<input  type = "radio" name = "radios<%=i%>" value = "1">
+  		<input type = "radio" name = "radios<%=i%>" value = "1">
   		</div>
   		<div class="col-sm-1">
   		<input type = "radio" name = "radios<%=i%>" value = "2">
@@ -95,25 +98,25 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneen kysymyksiin vastaamist
   		<div class="col-sm-1">
   		<input type = "radio" name = "radios<%=i%>" value = "5"> 
   		</div>
-
   		<br>
   		<br>
 
 
 		</div>
-  		<% 
-		 
 		
-  		}
+  		
 
+  		<% 
+
+  		}
+		
   		%>
-  		<br>
-  		<input type = "submit" value="Lähetä vastauksesi" >
+
+  	<input type = "submit" value = "Tallenna vastaus" >	
 	</fieldset>	
   	</form>
 	</div>
 	</div>
-
     
 
 

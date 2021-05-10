@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Protected</h2>
 <p>
 Protected JSP file. ${requestScope.fromfilter }
 </p>
