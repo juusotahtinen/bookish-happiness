@@ -17,7 +17,6 @@ import data.Vastaukset;
 /**
  * 
  * @author Leevi Palo
- * @author Juho Hamalainen
  *
  */
 
