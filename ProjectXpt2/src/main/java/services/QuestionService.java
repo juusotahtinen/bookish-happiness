@@ -59,17 +59,6 @@ public class QuestionService {
 			return list;
 		}
 		
-		@GET
-		@Path("/readtoupdatequestions/{kysymys_id}")
-		@Produces(MediaType.APPLICATION_JSON)
-		@Consumes(MediaType.APPLICATION_JSON)
-		public Kysymykset readToUpdateQuestions(@PathParam("kysymys_id") int kysymys_id) {
-			EntityManager em=emf.createEntityManager();
-			em.getTransaction().begin();
-			Kysymykset k=em.find(Kysymykset.class, kysymys_id);
-			em.getTransaction().commit();	
-			return k;
-		}
 		
 		@POST
 		@Path("/addquestions")
@@ -82,6 +71,18 @@ public class QuestionService {
 			em.getTransaction().commit();
 			List<Kysymykset> list = readQuestions();
 			return list;
+		}
+		
+		@GET
+		@Path("/readtoupdatequestions/{kysymys_id}")
+		@Produces(MediaType.APPLICATION_JSON)
+		@Consumes(MediaType.APPLICATION_JSON)
+		public Kysymykset readToUpdateQuestions(@PathParam("kysymys_id") int kysymys_id) {
+			EntityManager em=emf.createEntityManager();
+			em.getTransaction().begin();
+			Kysymykset k=em.find(Kysymykset.class, kysymys_id);
+			em.getTransaction().commit();	
+			return k;
 		}
 		
 		@PUT
