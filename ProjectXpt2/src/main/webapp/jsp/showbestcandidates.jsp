@@ -34,7 +34,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma sopivimmista ehdokkaista käyttäj
   	<div class="col-sm-12">
   	<fieldset>
   	<!-- Haetaan sopivaEhdokas listaan ehdokkaat  -->
-  	    <h1>Sinulle sopivimmat ehdokkaat sopivuus järjestyksessä:</h1>
+  	    <h1>Sinulle sopivimmat ehdokkaat sopivuusjärjestyksessä:</h1>
 
   	<%
   	ArrayList<Candidates> sopivaEhdokas = (ArrayList<Candidates>)request.getAttribute("parhaatEhdokkaat");
@@ -58,6 +58,7 @@ Tassa JSP ohjelmassa luodaan graafinen nakyma sopivimmista ehdokkaista käyttäj
 		
   
   	<% } %>
+  	<a href='/index.html'>Palaa etusivulle</a>
   	</fieldset>
   	</div>
     </div>
