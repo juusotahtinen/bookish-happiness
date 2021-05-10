@@ -21,7 +21,7 @@ import util.Crypt;
 @Path("/accountservice")
 public class Accountservice {
 	
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("hunterappi");
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 	
 	@GET
 	@Path("/all")

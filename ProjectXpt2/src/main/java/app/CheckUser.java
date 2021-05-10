@@ -57,7 +57,7 @@ public class CheckUser extends HttpServlet {
 		String pass=Crypt.crypt(request.getParameter("pass"));
 		
 		
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("hunterappi");
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 		EntityManager em=emf.createEntityManager();
 		
 		Query q=em.createQuery("select a from Account a where a.email = :email and a.password = :password");
@@ -78,7 +78,6 @@ public class CheckUser extends HttpServlet {
 			else {
 				response.sendRedirect("/jsp/login.jsp");//Or perhaps to register page
 			}
-		 
 	}
 
 }
