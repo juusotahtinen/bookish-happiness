@@ -59,7 +59,7 @@ public class EhdokkaanKysymykset extends HttpServlet {
     request.setAttribute("kysymykset", list);
     
     /**
-     * Seuraavaksi siirrytaan jps tiedostoon GUI.jsp
+     * Seuraavaksi siirrytaan jps tiedostoon CandidateAnswersGUI.jsp
      */
     
     RequestDispatcher rd = request.getRequestDispatcher("jsp/CandidateAnswersGUI.jsp");

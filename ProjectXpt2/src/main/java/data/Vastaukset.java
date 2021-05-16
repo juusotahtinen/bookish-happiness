@@ -10,7 +10,7 @@ import javax.persistence.Id;
 /**
  * 
  * @author Leevi Palo
- * Data luokka ehdokkaiden vastausten lukua tietokannasta varten
+ * Data luokka ehdokkaiden vastausten lukua ja tallentamista varten 
  *
  */
 @Entity
