@@ -22,6 +22,10 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * @author juuso
+ * @author riku
+ */
 
 @WebServlet(urlPatterns = {"/addquestions", "/readquestions", "/deletequestions", "/readtoupdatequestions", "/updatequestions"})
 public class HandleQuestions extends HttpServlet {
@@ -59,6 +63,22 @@ public class HandleQuestions extends HttpServlet {
 		
 	}
 	
+	/**
+	 * Juuson osuus kysymysten lukemisesta, lisäämisestä ja poistamisesta.
+	 */
+	
+	private List<Kysymykset> readquestions(HttpServletRequest request) {
+		String kysymys_id=request.getParameter("kysymys_id");
+		String uri = "http://localhost:8080/rest/questionservice/readquestions/";
+		Client asiakas=ClientBuilder.newClient();
+		WebTarget wt=asiakas.target(uri);
+		Builder b=wt.request();
+		GenericType<List<Kysymykset>> gL = new GenericType<List<Kysymykset>>() {};
+		
+		List<Kysymykset> rL=b.get(gL);
+		return rL;
+	}
+	
 	private List<Kysymykset> addquestions(HttpServletRequest request) {
 		Kysymykset k=new Kysymykset(request.getParameter("kysymys"));
 		System.out.println(k);
@@ -81,6 +101,11 @@ public class HandleQuestions extends HttpServlet {
 		List<Kysymykset> rL=b.delete(gL);
 		return rL;
 	}
+	
+	/**
+	 * Rikun osuus kysymysten lukemisesta muokkaamista varten ja kysymysten muokkaamisesta.
+	 */
+	
 	private Kysymykset readtoupdatequestions(HttpServletRequest request) {
 		String kysymys_id=request.getParameter("kysymys_id");
 		String uri = "http://localhost:8080/rest/questionservice/readtoupdatequestions/"+kysymys_id;
@@ -91,17 +116,6 @@ public class HandleQuestions extends HttpServlet {
 		return kysymykset;
 	}
 	
-	private List<Kysymykset> readquestions(HttpServletRequest request) {
-		String kysymys_id=request.getParameter("kysymys_id");
-		String uri = "http://localhost:8080/rest/questionservice/readquestions/";
-		Client asiakas=ClientBuilder.newClient();
-		WebTarget wt=asiakas.target(uri);
-		Builder b=wt.request();
-		GenericType<List<Kysymykset>> gL = new GenericType<List<Kysymykset>>() {};
-		
-		List<Kysymykset> rL=b.get(gL);
-		return rL;
-	}
 	
 	private List<Kysymykset> updatequestions(HttpServletRequest request) {
 		//A Fish object to send to our web-service 

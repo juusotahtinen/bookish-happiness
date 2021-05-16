@@ -36,10 +36,10 @@ public class Account {
 		public void setUser(String user) {
 			this.user = user;
 		}
-		public String getPass() {
+		public String getPassword() {
 			return pass;
 		}
-		public void setPass(String pass) {
+		public void setPassword(String pass) {
 			this.pass = pass;
 		}
 		
