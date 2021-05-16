@@ -20,37 +20,35 @@ import util.Crypt;
 
 @Path("/accountservice")
 public class Accountservice {
-	
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
-	
+
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("vaalikone");
+
 	@GET
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Account> readAllAccount() {
-		
-		EntityManager em=emf.createEntityManager();
-		
-		List<Account> list=em.createQuery("select a from Account a").getResultList();
+
+		EntityManager em = emf.createEntityManager();
+
+		List<Account> list = em.createQuery("select a from Account a").getResultList();
 		em.close();
 		return list;
 	}
-	
+
 	@POST
 	@Path("/addaccount")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Account postAccount(Account account) {
-		
-		account.setPassword(Crypt.crypt(account.getPassword()));	
 
-		EntityManager em=emf.createEntityManager();
+		account.setPassword(Crypt.crypt(account.getPassword()));
+
+		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(account);
 		em.getTransaction().commit();
 		em.close();
 		return account;
 	}
-	
+
 }
-
-
