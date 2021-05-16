@@ -17,7 +17,6 @@ import data.Vastaukset;
 /**
  * 
  * @author Leevi Palo
- * @author Juho Hamalainen
  *
  */
 
@@ -30,11 +29,21 @@ import data.Vastaukset;
 public class EhdokkaanVastaukset extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 		throws IOException, ServletException {
 		
-		ArrayList<Integer> kayttajanVastaukset = new ArrayList<>();
+		/**
+		 * Luodaan arraylist johon tallennetaan ehdokkaan antamat vastaukset
+		 */
+		
+		ArrayList<Integer> ehdokkaanVastaukset = new ArrayList<>();
+		
+		/**
+		 * Otetaan sessiosta käyttöön kysymyslistan pituus for looppia varten ja tallennetaan se muuttujaan
+		 * 
+		 */
 		
 		HttpSession session=request.getSession(false);
 		int size = (int) session.getAttribute("pituus");
@@ -47,7 +56,7 @@ public class EhdokkaanVastaukset extends HttpServlet {
 		for (int i=0;i<size;i++) {
 			
 			/**
-			 * Looppi pyorii kysymysten maaran verran ja vastaanottaa GUI.jsp:lta kayttajan vastaukset 
+			 * Looppi pyorii kysymysten maaran verran ja vastaanottaa CandidateAnswersGUI.jsp:lta ehdokkaan vastaukset 
 			 * Sen jalkeen ne lisataan ArrayListiin
 			 */
 			
@@ -56,19 +65,23 @@ public class EhdokkaanVastaukset extends HttpServlet {
 			if (vastausString == null) {
 				
 				vastaus = 0;
-				kayttajanVastaukset.add(vastaus);
+				ehdokkaanVastaukset.add(vastaus);
 				
 			}
 			else {
 				
 				vastaus = Integer.parseInt(vastausString);
-				kayttajanVastaukset.add(vastaus);
+				ehdokkaanVastaukset.add(vastaus);
 				
 			}
 
 		}
 		
-		request.setAttribute("kayttajanVastaukset", kayttajanVastaukset);
+		/**
+		 * Lopuksi lähetetään ehdokkaanVastaukset lista restful servicelle
+		 */
+		
+		request.setAttribute("ehdokkaanVastaukset", ehdokkaanVastaukset);
 	    
 	    RequestDispatcher rd = request.getRequestDispatcher("/rest/candidatesanswersservice/addanswers");
 	    rd.forward(request, response);
