@@ -8,6 +8,7 @@ import javax.persistence.Id;
 /**
  * 
  * @author Leevi Palo
+ * @author juuso
  * Data luokka kysymysten lukua tietokannasta varten
  *
  */
