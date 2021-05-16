@@ -17,28 +17,25 @@ import javax.servlet.http.HttpSession;
 import data.Account;
 import util.Crypt;
 
+
 /**
- * Servlet implementation class CheckUser
+ * @author Juho
+ * Servletin toteutus
  */
 @WebServlet("/checkuser")
 public class CheckUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public CheckUser() {
 		super();
-// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-// TODO Auto-generated method stub
+/**
+ * Jos "logout" -parametri on jotain muuta kuin null, siirrytään index -sivulle, jossa käyttäjä ei ole kirjautunut sisään.
+ */
 		if (request.getParameter("logout") != null) {
 			HttpSession sessio = request.getSession(true);
 			sessio.invalidate();
@@ -47,28 +44,35 @@ public class CheckUser extends HttpServlet {
 		response.sendRedirect("/index.html");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-// TODO Auto-generated method stub
-
+/**
+ * Otetaan vastaan user ja pass parametrit login.jsp formilta jossa käyttäjä syöttää tietonsa tekstiruutuihin kirjautuakseen sisään.
+ */
 		String user = request.getParameter("user");
-		
+/**
+ * Käytetään util packagessa olevan Crypt.java -tiedoston crypt -metodia suojataksemme salasanan.
+ */
 		String pass = Crypt.crypt(request.getParameter("pass"));
 		
-
+/*
+ * Otetaan yhteys tietokantaan.
+ */
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("vaalikone");
 		EntityManager em = emf.createEntityManager();
-
+/**
+ * Luodaan SQL kysely, jossa valitaan tietokannan account -taulusta email ja password.
+ */
 		Query q = em.createQuery("select a from Account a where a.email = :email and a.password = :password");
-
+/**
+ * Verrataan käyttäjän formille syöttämiä tunnuksia tietokannassa oleviin tunnuksiin.
+ */
 		q.setParameter("email", user);
 
 		q.setParameter("password", pass);
-
+/**
+ * Asetetaan tiedot listaan ja tarkastellaan, mikäli listan koko on 1, kirjaudutaan sisään eli siirrytään loggedindex.html -sivulle, tai muussa tapauksessa (mikäli tunnukset ovat väärät) pysytään login.jsp -sivulla.
+ */
 		List<Account> list = q.getResultList();
 
 		if (list.size() == 1) {
@@ -76,7 +80,7 @@ public class CheckUser extends HttpServlet {
 			sessio.setAttribute("AuthOk", "ok");
 			response.sendRedirect("/loggedindex.html");
 		} else {
-			response.sendRedirect("/jsp/login.jsp");// Or perhaps to register page
+			response.sendRedirect("/jsp/login.jsp");
 		}
 
 	}

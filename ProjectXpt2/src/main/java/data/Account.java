@@ -5,8 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Juho
+ * Data luokka kayttajatunnuksia varten
+ */
+
 @Entity
 public class Account {
+	/**
+	 * Alustetaan id, email ja password, jotka tarkoittavat tietokantaan lahetettavia tietoja.
+	 */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -29,7 +38,9 @@ public class Account {
 		this.email = email;
 		this.password = password;
 	}
-
+/**
+ * Luodaan getterit ja setterit
+ */
 	public int getId() {
 		return id;
 	}

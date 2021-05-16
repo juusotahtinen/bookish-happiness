@@ -1,11 +1,20 @@
+<!-- 
+Author Juho
+
+Tassa JSP ohjelmassa luodaan graafinen nakyma vaalikoneeseen rekisteroitymista varten
+
+ -->
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Add new account</title>
 <script>
+
+<!-- funktio joka lahettaa tiedot Accountservice.javalle-->
 function sendData() {
-	//Create a new Javascript object
+	//Luodaan uusi Javascript -olio joka saa arvot email ja password
 	var account=new Object();
 	account.email=document.getElementById("email").value;
 	account.password=document.getElementById("password").value;
@@ -32,6 +41,7 @@ function sendData() {
 
 <body>
 <h2>Registration</h2>
+<!-- formi jossa kaksi tekstinsyöttökenttää kayttajatunnukselle ja salasanalle sekä submit painike jota painettaessa kututaan sendData -funktiota -->
 <form action="#" method='post' onsubmit='return false;'>
 Email: <input id='email' type='text' name='email' autocomplete="off" value='' placeholder='New account email'><br>
 Password: <input id='password' type='password' name='password' autocomplete="off" value='' placeholder='New account password' ><br>
