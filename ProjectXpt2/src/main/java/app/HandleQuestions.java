@@ -118,6 +118,9 @@ public class HandleQuestions extends HttpServlet {
 	 * Rikun osuus kysymysten lukemisesta muokkaamista varten ja kysymysten muokkaamisesta.
 	 */
 	
+	/**
+	 * Servletti kysymysten lukemisesta muokkaamista varten.
+	 */
 	private Kysymykset readtoupdatequestions(HttpServletRequest request) {
 		String kysymys_id=request.getParameter("kysymys_id");
 		String uri = "http://localhost:8080/rest/questionservice/readtoupdatequestions/"+kysymys_id;
@@ -128,7 +131,9 @@ public class HandleQuestions extends HttpServlet {
 		return kysymykset;
 	}
 	
-	
+	/**
+	 * Servletti kysymysten päivittämistä varten.
+	 */
 	private List<Kysymykset> updatequestions(HttpServletRequest request) {
 		//A Fish object to send to our web-service 
 		Kysymykset k=new Kysymykset(request.getParameter("kysymys_id"), request.getParameter("kysymys"));
@@ -137,7 +142,7 @@ public class HandleQuestions extends HttpServlet {
 		Client c=ClientBuilder.newClient();
 		WebTarget wt=c.target(uri);
 		Builder b=wt.request();
-		//Here we create an Entity of a Fish object as JSON string format
+		//Here we create an Entity of a object as JSON string format
 		Entity<Kysymykset> e=Entity.entity(k,MediaType.APPLICATION_JSON);
 		//Create a GenericType to be able to get List of objects
 		//This will be the second parameter of post method

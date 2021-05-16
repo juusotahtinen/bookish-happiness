@@ -91,6 +91,9 @@ public class QuestionService {
 		 * Rikun osuus kysymysten lukemisesta muokkaamista varten ja kysymysten muokkaamisesta.
 		 */
 		
+		/**
+		 * Vastaanotetaan servletilta kysymykset ja luetaan kysymykset ID:n mukaan muokkaamista varten.
+		 */
 		@GET
 		@Path("/readtoupdatequestions/{kysymys_id}")
 		@Produces(MediaType.APPLICATION_JSON)
@@ -103,6 +106,10 @@ public class QuestionService {
 			return k;
 		}
 		
+		
+		/**
+		 * Päivitetään kysymys uudella kysymyksellä ID:n mukaan.
+		 */
 		@PUT
 		@Path("/updatequestions")
 		@Produces(MediaType.APPLICATION_JSON)
