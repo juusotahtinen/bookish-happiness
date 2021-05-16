@@ -67,6 +67,10 @@ public class HandleQuestions extends HttpServlet {
 	 * Juuson osuus kysymysten lukemisesta, lisäämisestä ja poistamisesta.
 	 */
 	
+	
+	/**
+	 * Servletti kysymysten lukemista varten.
+	 */
 	private List<Kysymykset> readquestions(HttpServletRequest request) {
 		String kysymys_id=request.getParameter("kysymys_id");
 		String uri = "http://localhost:8080/rest/questionservice/readquestions/";
@@ -79,6 +83,10 @@ public class HandleQuestions extends HttpServlet {
 		return rL;
 	}
 	
+	
+	/**
+	 * Servletti kysymysten lisäämistä varten.
+	 */
 	private List<Kysymykset> addquestions(HttpServletRequest request) {
 		Kysymykset k=new Kysymykset(request.getParameter("kysymys"));
 		System.out.println(k);
@@ -91,6 +99,10 @@ public class HandleQuestions extends HttpServlet {
 		List<Kysymykset> rL=b.post(e, gL);
 		return rL;
 	}
+	
+	/**
+	 * Servletti kysymysten poistamista varten.
+	 */
 	private List<Kysymykset> deletequestions(HttpServletRequest request) {
 		String kysymys_id=request.getParameter("kysymys_id");
 		String uri = "http://localhost:8080/rest/questionservice/deletequestions/"+kysymys_id;

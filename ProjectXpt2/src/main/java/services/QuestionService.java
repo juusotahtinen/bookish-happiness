@@ -32,7 +32,14 @@ public class QuestionService {
 	//Reading all the rows from table kysymykset.
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("vaalikone");
 		
+		/**
+		 * Juuson osuus kysymysten lukemisesta, lisäämisestä ja poistamisesta.
+		 */
 		
+		
+		/**
+		 * Vastaanotetaan servletilta kysymykset ja luodaan lista tietokannassa olevista kysymyksistä.
+		 */
 		@GET
 		@Path("/readquestions")
 		@Produces(MediaType.APPLICATION_JSON)
@@ -44,6 +51,10 @@ public class QuestionService {
 			em.getTransaction().commit();
 			return list;
 	}
+		
+		/**
+		 * Vastaanotetaan servletilta kysymys id:n mukaisesti ja poistetaan kysymys tietokannasta.
+		 */
 		@DELETE
 		@Path("/deletequestions/{kysymys_id}")
 		@Produces(MediaType.APPLICATION_JSON)
@@ -60,7 +71,9 @@ public class QuestionService {
 			return list;
 		}
 		
-		
+		/**
+		 * Lähetetään servletille uusi kysymys ja lisätään kysymys tietokantaan.
+		 */
 		@POST
 		@Path("/addquestions")
 		@Produces(MediaType.APPLICATION_JSON)
@@ -73,6 +86,10 @@ public class QuestionService {
 			List<Kysymykset> list = readQuestions();
 			return list;
 		}
+		
+		/**
+		 * Rikun osuus kysymysten lukemisesta muokkaamista varten ja kysymysten muokkaamisesta.
+		 */
 		
 		@GET
 		@Path("/readtoupdatequestions/{kysymys_id}")
