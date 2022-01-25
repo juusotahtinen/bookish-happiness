@@ -1,2 +1,2 @@
 # bookish-happiness
-Part 2 of our election machine java restful services and jpa
+Election machine java restful services and jpa. School project.
